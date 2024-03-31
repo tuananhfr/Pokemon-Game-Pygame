@@ -1,0 +1,38 @@
+class gameSettings:
+    GAMEWIDTH = 1000    
+    GAMEHEIGHT = 600
+    FPS = 60
+    PICTURESIZE = 50
+    BOARD_COLUMNS = 14
+    BOARD_ROWS = 9
+
+    NUM_TILE_ON_BOARD = 21
+    NUM_SAME_TILE = 4
+
+    TILE_WIDTH = 50
+    TILE_HEIGHT = 55 
+
+    # PADDING = 10
+
+
+    MARGIN_X = (GAMEWIDTH - TILE_WIDTH * BOARD_COLUMNS) // 2
+    MARGIN_Y = (GAMEHEIGHT - TILE_HEIGHT * BOARD_ROWS) // 2 + 15
+
+
+    NUM_TILE = 33
+    LIST_TILE = [0] * (NUM_TILE + 1)
+
+    MAX_LEVEL = 5
+    #time bar
+    TIME_BAR_WIDTH = 500
+    TIME_BAR_HEIGHT = 30
+    TIME_BAR_POS = ((GAMEWIDTH - TIME_BAR_WIDTH) // 2, (MARGIN_Y - TIME_BAR_HEIGHT) // 2)
+    GAME_TIME = 180
+    HINT_TIME = 20
+    TIME_END = 6
+
+
+
+    
+    WHITE = (255, 255, 255)
+    BLACK = (0, 0, 0)
