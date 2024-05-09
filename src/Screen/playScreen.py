@@ -67,7 +67,7 @@ class playScreen(Screen):
         self.level = 1
         self.lives = 3         
         while self.level <= gameSettings.MAX_LEVEL:
-            print("Current level:", self.level)
+
             random.shuffle(self.backgroundList)
             self.playing()
             self.level += 1
@@ -164,7 +164,9 @@ class playScreen(Screen):
                 select = self.panel_pause(self.mouse_x, self.mouse_y, self.mouse_clicked) # 0 if click replay, 1 if click home, 2 if continue, 3 if nothing
                 if select == 0: 
                     self.lives -= 1
-                    if self.lives > 0:					    
+
+                    if self.lives > 0:
+                        self.level -= 1					    
                         return
                     
                 elif select == 1:
@@ -189,7 +191,7 @@ class playScreen(Screen):
                             self.game.clicked_tile_sound.play()
 
                         if len(self.clicked_tiles) > 1: # 2 cards was clicked 
-                            path = bfsAlgorithme.algo(self.board, self.clicked_tiles[0][0], self.clicked_tiles[0][1], tile_i, tile_j)
+                            path = bfsAlgorithme(self.board).algo( self.clicked_tiles[0][0], self.clicked_tiles[0][1], tile_i, tile_j)
                             if path:
 				    			# delete the same card
                                 self.board[self.clicked_tiles[0][0]][self.clicked_tiles[0][1]] = 0
@@ -219,7 +221,7 @@ class playScreen(Screen):
                                     return
  
 				    			# if hint got by player
-                                if not(self.board[self.hint[0][0]][self.hint[0][1]] != 0 and bfsAlgorithme.algo(self.board, self.hint[0][0], self.hint[0][1], self.hint[1][0], self.hint[1][1])):
+                                if not(self.board[self.hint[0][0]][self.hint[0][1]] != 0 and bfsAlgorithme(self.board).algo( self.hint[0][0], self.hint[0][1], self.hint[1][0], self.hint[1][1])):
                                     self.hint = self.boardPlay.get_hint(self.board)
                                     while not self.hint:
                                         pygame.time.wait(100)
@@ -482,7 +484,7 @@ class playScreen(Screen):
                 self.update_difficulty(self.board, self.level, tile1_i, tile1_j, tile2_i, tile2_j)
                 if self.is_level_complete(self.board): return
                     
-                if not(self.board[tile1_i][tile1_j] != 0 and bfsAlgorithme.algo(self.board, tile1_i, tile1_j, tile2_i, tile2_j)):
+                if not(self.board[tile1_i][tile1_j] != 0 and bfsAlgorithme(self.board).algo(tile1_i, tile1_j, tile2_i, tile2_j)):
                     self.hint = self.boardPlay.get_hint(self.board)
                     while not self.hint:
                         pygame.time.wait(100)
@@ -503,6 +505,7 @@ class playScreen(Screen):
         :param tile2_i: The row index of the second tile.
         :param tile2_j: The column index of the second tile.
         """
+        
         if level == 2: #all card move up
             for j in (tile1_j, tile2_j):
                 new_column = [0]

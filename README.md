@@ -1,6 +1,6 @@
-# Projet: Jeu classique Pikachu
-
 # Auteur de projet: PHAM Tuan Anh
+
+# Projet: Jeu classique Pikachu
 
 ## Introduction:
 

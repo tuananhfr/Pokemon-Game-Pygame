@@ -3,7 +3,7 @@ from algorithme.bfsAlgorithme import bfsAlgorithme
 
 import pygame
 import random, collections
-class boardPlay():
+class boardPlay:
     """
     Class to manage the game board including drawing tiles, borders, paths, hints, and resetting the board.
 
@@ -18,6 +18,7 @@ class boardPlay():
         :param game (object): The main game object.
         """
         self.game = game
+
         for i in range(1, gameSettings.NUM_TILE + 1): gameSettings.LIST_TILE[i] = pygame.transform.scale(pygame.image.load("assets/images/tiles/section" + str(i) + ".png"), (gameSettings.TILE_WIDTH, gameSettings.TILE_HEIGHT))
         
         
@@ -126,10 +127,12 @@ class boardPlay():
         for i in range(gameSettings.BOARD_ROWS):
             for j in range(gameSettings.BOARD_COLUMNS):
                 if board[i][j]:
-                    for o in tiles_location[board[i][j]]:	
-                        if o != (i, j) and bfsAlgorithme.algo(board, i, j, o[0], o[1]):
+                    for o in tiles_location[board[i][j]]:
+                        	
+                        if o != (i, j) and bfsAlgorithme(board).algo(i, j, o[0], o[1]):
                             hint.append((i, j))
                             hint.append(o)
+                            
                             return hint
         return []
     
