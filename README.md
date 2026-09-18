@@ -130,3 +130,5 @@ Vous trouverez ci-dessous les fonctions principales de la classe `bfsAlgorithme`
 ## Conclusion:
 
 Le projet Classic Pikachu Game vise à offrir une expérience de jeu divertissante et stimulante aux joueurs de tous âges. En implémentant diverses fonctionnalités telles que la correspondance de tuiles, la progression de niveau, le contrôle de la musique et le système de vies, le projet offrira une expérience de jeu engageante. Grâce à un développement et à des tests itératifs, le projet sera affiné pour garantir une fonctionnalité fluide et une expérience utilisateur agréable.
+
+:>
